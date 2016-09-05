@@ -91,7 +91,6 @@
     <Compile Include="ExScientifique.cs" />
     <Compile Include="PlaTemperee.cs" />
     <Compile Include="PlaVolcanique.cs" />
-    <Compile Include="Ressources.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

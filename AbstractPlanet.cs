@@ -68,7 +68,7 @@ namespace SpaceConsole
             Program.planets.Add(planet);
 
             // Liste les planètes, lors de la création de la DERNIERE (en utilisant les propriétés des instances de l'OBJET 'Planet')
-            if (Program.nb == Program.planets.Count())
+            if (Program.nbPla == Program.planets.Count())
             {
                 Console.WriteLine("\n");
                 var planetsArray = Program.planets.ToArray();
