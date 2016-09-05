@@ -47,7 +47,6 @@ local.properties
 [Rr]elease/
 x64/
 build/
-bin/
 [Bb]in/
 [Oo]bj/
 
@@ -215,10 +214,4 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-bin/Debug/SpaceConsole.application
-bin/Debug/SpaceConsole.exe
-obj/Debug/SpaceConsole.application
-bin/Debug/SpaceConsole.application
-bin/Debug/SpaceConsole.exe.manifest
-obj/Debug/SpaceConsole.exe.manifest
-bin/Debug/SpaceConsole.pdb
+
