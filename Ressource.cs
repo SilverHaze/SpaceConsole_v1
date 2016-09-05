@@ -47,8 +47,5 @@ namespace SpaceConsole
             get { return this.resPMax; }
             set { this.resPMax = value; }
         }
-
     }
-
-
 }

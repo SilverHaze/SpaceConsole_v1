@@ -29,19 +29,6 @@ namespace SpaceConsole
             ExMiniere exploitMiniere = new ExMiniere();
             ExIndustrielle exploitIndustrielle = new ExIndustrielle();
             ExMegapole exploitMegapole = new ExMegapole();
-
-            // Instanciation des Ressources
-            Ressource silicium = new Ressource("Silicium", "Matière première utilisée pour la fabrication de tout Circuit Intégré", 15, 10, 25);
-            Ressource metaux = new Ressource("Metaux", "Aliages métaliques principalement utilisés pour la construction de structures", 25, 20, 35);
-            Ressource metauxprec = new Ressource("Metaux Précieux", "Métaux souvent utilisés dans la fabrication de Composants", 100, 9, 10);
-            Ressource polymeres = new Ressource("Polymères", "Aliages de matériaux synthétiques isolants utlisés dans la construction de structures", 20, 15, 30);
-            Ressource composants = new Ressource("Composants", "Nécéssaires à la frabrication et l'entretient de systemes informatisés ou robotisés", 50, 40, 60);
-            Ressource cells = new Ressource("Cellules d'Energie", "Utiles partout et tout le temps, elles alimentent la plupart des machines", 40, 35, 50);
-            Ressource mineraux = new Ressource("Minéraux", "Utilisés dans certains Composants ou dans certaines Industries Lourdes", 80, 70, 95);
-            Ressource cereales = new Ressource("Céréales", "La base alimentaire de toute la galaxie", 15, 10, 20);
-            Ressource viande = new Ressource("Viande", "Complément alimentaire de ceux qui peuvent se le permettre", 30, 20, 45);
-            Ressource spiritieux = new Ressource("Spiritueux", "Illégaux dans de nombreux systemes, ces substances sont pourtant très prisés", 130, 90, 180);
-
             #endregion
 
             try
@@ -51,12 +38,12 @@ namespace SpaceConsole
 
                 // INPUT
                 Console.WriteLine("Entrez le nombre de planètes à générer :");
-                nbPla = Convert.ToInt32(Console.ReadLine());
+                nb = Convert.ToInt32(Console.ReadLine());
 
                 #region CREATION (RANDOM) DES PLANETES
                 // Création (RANDOM) des Planetes 
                 // on peut certainement mieux faire en ré-utilisant ListExploitation(), mais au moins ça marche
-                for (int i = 0; i < nbPla; i++)
+                for (int i = 0; i < nb; i++)
                 {
                     int p = rnd.Next(1, 6); // Random Planet Type
                     object pla = new object();
@@ -168,7 +155,7 @@ namespace SpaceConsole
         }
 
 
-        public static int nbPla = new int();   // Utilisé dans AbstractPlanet pour déterminer quelle planete est la derniere crée
+        public static int nb = new int();   // Utilisé dans AbstractPlanet pour déterminer quelle planete est la derniere crée
 
         // Liste déclarée ici a cause des tentatives de recup la liste ici, voir methode void setExploitation()
         public static List<Planet> planets = new List<Planet>();
