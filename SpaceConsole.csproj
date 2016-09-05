@@ -73,7 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractPlanet.cs" />
+    <Compile Include="Ressource.cs" />
     <Compile Include="ExAgricole.cs" />
+    <Compile Include="IRessource.cs" />
     <Compile Include="PlaArctique.cs" />
     <Compile Include="PlaAride.cs" />
     <Compile Include="BadExploitException.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="ExScientifique.cs" />
     <Compile Include="PlaTemperee.cs" />
     <Compile Include="PlaVolcanique.cs" />
+    <Compile Include="Ressources.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

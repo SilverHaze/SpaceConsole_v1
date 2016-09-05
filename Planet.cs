@@ -18,7 +18,7 @@ namespace SpaceConsole
         //public Planet(int i, string n, object p, object e)
         public Planet(object p, object e)
         {
-            //this.plaID = i
+            //this.plaID = i;
             //this.plaName = n;
             this.plaType = p;
             this.plaExploit = e;
