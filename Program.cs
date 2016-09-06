@@ -9,6 +9,13 @@ namespace SpaceConsole
 {
     class Program
     {
+        // ENUMS
+
+        // enum ResEnum { silicium, metaux, metauxprec, polymeres, composants, cells, mineraux, cereales, viande, spiritieux };
+        
+        // 57
+        //enum StarNames { Baham, Bakham, Baten, Bécrux, Beemin, Beïd, Békruks, Bellatrix, Benetnasch, Bételgeuze, Biham, Boteïn, Brachium, Cajam, Calx, Canicula, Canopus, Capella, Caph, Caput, Castor, Cébalraï, Céginus, Celaeno, Céline, Cexing, Chaph, Chara, Cheleb, Chertan, Chort, Clava, Cor, Coxa, Cujam, Cursa, Cymbae, Cygnus, Cynosura, Dabih, Dana, Déneb, Dénébola, Dhalim, Dheneb, Diadème, Difda, Dikhabda, Diphda, Dirakh, Dschubba, Dsiban, Dubhé, Duhr, Dzhanakh, Dzhubba, Dziban };
+            
 
         static void Main(string[] args)
         {
@@ -55,6 +62,7 @@ namespace SpaceConsole
             Ressource viande = new Ressource("Viande", "Complément alimentaire de ceux qui peuvent se le permettre", 30, 20, 45);
             Ressource spiritieux = new Ressource("Spiritueux", "Illégaux dans de nombreux systemes, ces substances sont pourtant très prisées", 130, 90, 180);
             
+            
             #endregion
 
             // INPUT
@@ -64,6 +72,8 @@ namespace SpaceConsole
             {
                 var res = Convert.ToInt32(Console.ReadLine());
                 Ressource ResObj = null;
+
+
                 switch (res)
                 {
                     case 1:
@@ -97,14 +107,14 @@ namespace SpaceConsole
                         ResObj = spiritieux;
                         break;
                     default:
-                        Console.WriteLine("Argument non valide\n");
+                        Console.WriteLine("Erreur: Argument non valide\n");
                         goto input1;
                 }
                 Console.WriteLine(ReadResObj(ResObj) + "\n");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Argument non valide\n");
+                Console.WriteLine("Erreur: Argument non valide\n");
                 goto input1;
             }
 
@@ -124,6 +134,12 @@ namespace SpaceConsole
                 // on peut certainement mieux faire en ré-utilisant ListExploitation(), mais au moins ça marche
                 for (int i = 0; i < nbPla; i++)
                 {
+                    int n = rnd.Next(0, 57); // Random Planet Name
+
+                    Array valuesStar = Enum.GetValues(typeof(Stars.StarNames));
+                    Stars.StarNames rndStar = (Stars.StarNames)valuesStar.GetValue(rnd.Next(valuesStar.Length));
+                    Console.WriteLine(rndStar);
+
                     int p = rnd.Next(1, 6); // Random Planet Type
                     object pla = new object();
                     object exp = new object();
@@ -244,6 +260,7 @@ namespace SpaceConsole
 
         // Liste déclarée ici a cause des tentatives de recup la liste ici, voir methode void setExploitation()
         public static List<Planet> planets = new List<Planet>();
+
 
     }
 }
