@@ -31,18 +31,83 @@ namespace SpaceConsole
             ExMegapole exploitMegapole = new ExMegapole();
 
             // Instanciation des Ressources
+            /*
+            Silicium silicium = new Silicium();
+            Metaux metaux = new Metaux();
+            MetauxPrec metauxprec = new MetauxPrec();
+            Polymeres polymeres = new Polymeres();
+            Composants composants = new Composants();
+            Cells cells = new Cells();
+            Mineraux mineraux = new Mineraux();
+            Cereales cereales = new Cereales();
+            Viande viande = new Viande();
+            Spiritieux spiritieux = new Spiritieux();
+            */
+
             Ressource silicium = new Ressource("Silicium", "Matière première utilisée pour la fabrication de tout Circuit Intégré", 15, 10, 25);
             Ressource metaux = new Ressource("Metaux", "Aliages métaliques principalement utilisés pour la construction de structures", 25, 20, 35);
             Ressource metauxprec = new Ressource("Metaux Précieux", "Métaux souvent utilisés dans la fabrication de Composants", 100, 9, 10);
             Ressource polymeres = new Ressource("Polymères", "Aliages de matériaux synthétiques isolants utlisés dans la construction de structures", 20, 15, 30);
-            Ressource composants = new Ressource("Composants", "Nécéssaires à la frabrication et l'entretient de systemes informatisés ou robotisés", 50, 40, 60);
+            Ressource composants = new Ressource("Composants", "Nécéssaires à la frabrication et l'entretient de systèmes informatisés ou robotisés", 50, 40, 60);
             Ressource cells = new Ressource("Cellules d'Energie", "Utiles partout et tout le temps, elles alimentent la plupart des machines", 40, 35, 50);
-            Ressource mineraux = new Ressource("Minéraux", "Utilisés dans certains Composants ou dans certaines Industries Lourdes", 80, 70, 95);
+            Ressource mineraux = new Ressource("Minéraux", "Utilisés dans l'Industrie, notement dans la fabrications de Cellules d'Energie", 80, 70, 95);
             Ressource cereales = new Ressource("Céréales", "La base alimentaire de toute la galaxie", 15, 10, 20);
             Ressource viande = new Ressource("Viande", "Complément alimentaire de ceux qui peuvent se le permettre", 30, 20, 45);
-            Ressource spiritieux = new Ressource("Spiritueux", "Illégaux dans de nombreux systemes, ces substances sont pourtant très prisés", 130, 90, 180);
-
+            Ressource spiritieux = new Ressource("Spiritueux", "Illégaux dans de nombreux systemes, ces substances sont pourtant très prisées", 130, 90, 180);
+            
             #endregion
+
+            // INPUT
+            input1:
+            Console.WriteLine("Ressources disponibles :\n1 - Silicium\n2 - Metaux\n3 - Metaux Precieux\n4 - Polymères\n5 - Composants\n6 - Cellules d'Energie\n7 - Minéraux\n8 - Céréales\n9 - Viande\n10 - Spiritueux \nQuelle ressource consulter ?");
+            try
+            {
+                var res = Convert.ToInt32(Console.ReadLine());
+                Ressource ResObj = null;
+                switch (res)
+                {
+                    case 1:
+                        ResObj = silicium;
+                        break;
+                    case 2:
+                        ResObj = metaux;
+                        break;
+                    case 3:
+                        ResObj = metauxprec;
+                        break;
+                    case 4:
+                        ResObj = polymeres;
+                        break;
+                    case 5:
+                        ResObj = composants;
+                        break;
+                    case 6:
+                        ResObj = cells;
+                        break;
+                    case 7:
+                        ResObj = mineraux;
+                        break;
+                    case 8:
+                        ResObj = cereales;
+                        break;
+                    case 9:
+                        ResObj = viande;
+                        break;
+                    case 10:
+                        ResObj = spiritieux;
+                        break;
+                    default:
+                        Console.WriteLine("Argument non valide\n");
+                        goto input1;
+                }
+                Console.WriteLine(ReadResObj(ResObj) + "\n");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Argument non valide\n");
+                goto input1;
+            }
+
 
             try
             {
@@ -52,6 +117,7 @@ namespace SpaceConsole
                 // INPUT
                 Console.WriteLine("Entrez le nombre de planètes à générer :");
                 nbPla = Convert.ToInt32(Console.ReadLine());
+                
 
                 #region CREATION (RANDOM) DES PLANETES
                 // Création (RANDOM) des Planetes 
@@ -166,6 +232,12 @@ namespace SpaceConsole
                 Console.ReadKey();
             }
         }
+
+        private static string ReadResObj(Ressource r)
+        {
+            return r.ResName.ToString() + " (Prix Moyen: " + r.ResPMoy + " - Min: " + r.ResPMin + " - Max: " + r.ResPMax + ")\n" + r.ResDescription.ToString();
+        }
+
 
 
         public static int nbPla = new int();   // Utilisé dans AbstractPlanet pour déterminer quelle planete est la derniere crée

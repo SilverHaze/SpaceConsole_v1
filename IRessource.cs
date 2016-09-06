@@ -8,6 +8,5 @@ namespace SpaceConsole
 {
     interface IRessource
     {
-
     }
 }
