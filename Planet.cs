@@ -11,15 +11,15 @@ namespace SpaceConsole
     public class Planet
     {
         //private object plaID;
-        //private object plaName;
+        private object plaName;
         private object plaType;
         private object plaExploit;
 
         //public Planet(int i, string n, object p, object e)
-        public Planet(object p, object e)
+        public Planet(string n, object p, object e)
         {
             //this.plaID = i;
-            //this.plaName = n;
+            this.plaName = n;
             this.plaType = p;
             this.plaExploit = e;
         }
@@ -29,12 +29,13 @@ namespace SpaceConsole
             get { return this.plaID; }
             set { this.plaID = value; }
         }
+        */
         public object PlaName
         {
             get { return this.plaName; }
             set { this.plaName = value; }
         }
-        */
+        
         public object PlaType
         {
             get { return this.plaType; }

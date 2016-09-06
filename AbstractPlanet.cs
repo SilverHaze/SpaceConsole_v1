@@ -53,7 +53,7 @@ namespace SpaceConsole
 
         private object CreatePlanet(IExploitation aexploit)
         {
-            /* Liste les Planetes lors de la création de CHACUNE (en utilisant le type attribué)
+            /* LISTE les Planetes lors de la création de CHACUNE (en utilisant le type attribué)
             object pl = this.GetType();
             object ex = aexploit.GetType();
             String p = Convert.ToString(pl).Replace(remPla, string.Empty);
@@ -62,12 +62,12 @@ namespace SpaceConsole
             */
 
             // Instanciation de l'objet 'Planet'
-            Planet planet = new Planet(this.GetType(), aexploit.GetType());            
+            Planet planet = new Planet(Program.rndStar, this.GetType(), aexploit.GetType());            
             
             // Ajout de cette instance de l'objet 'Planet' à la liste des planètes
             Program.planets.Add(planet);
 
-            // Liste les planètes, lors de la création de la DERNIERE (en utilisant les propriétés des instances de l'OBJET 'Planet')
+            // LISTE les planètes, lors de la création de la DERNIERE (en utilisant les propriétés des instances de l'OBJET 'Planet')
             if (Program.nbPla == Program.planets.Count())
             {
                 Console.WriteLine("\n");
@@ -76,7 +76,7 @@ namespace SpaceConsole
                 {                
                     String p = Convert.ToString(item.PlaType).Replace("SpaceConsole.Pla", string.Empty);
                     String e = Convert.ToString(item.PlaExploit).Replace("SpaceConsole.Ex", string.Empty);
-                    Console.WriteLine(p + " - " + e);                    
+                    Console.WriteLine(item.PlaName + " - " + p + " " + e);                    
                 }
                 Console.WriteLine("\n--> " + planetsArray.Count() + " planètes générées.");
             }

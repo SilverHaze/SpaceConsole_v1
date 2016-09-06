@@ -38,19 +38,6 @@ namespace SpaceConsole
             ExMegapole exploitMegapole = new ExMegapole();
 
             // Instanciation des Ressources
-            /*
-            Silicium silicium = new Silicium();
-            Metaux metaux = new Metaux();
-            MetauxPrec metauxprec = new MetauxPrec();
-            Polymeres polymeres = new Polymeres();
-            Composants composants = new Composants();
-            Cells cells = new Cells();
-            Mineraux mineraux = new Mineraux();
-            Cereales cereales = new Cereales();
-            Viande viande = new Viande();
-            Spiritieux spiritieux = new Spiritieux();
-            */
-
             Ressource silicium = new Ressource("Silicium", "Matière première utilisée pour la fabrication de tout Circuit Intégré", 15, 10, 25);
             Ressource metaux = new Ressource("Metaux", "Aliages métaliques principalement utilisés pour la construction de structures", 25, 20, 35);
             Ressource metauxprec = new Ressource("Metaux Précieux", "Métaux souvent utilisés dans la fabrication de Composants", 100, 9, 10);
@@ -65,8 +52,9 @@ namespace SpaceConsole
             
             #endregion
 
-            // INPUT
-            input1:
+            #region CONSULTATION RESOURCES
+        // INPUT
+            inputRes:
             Console.WriteLine("Ressources disponibles :\n1 - Silicium\n2 - Metaux\n3 - Metaux Precieux\n4 - Polymères\n5 - Composants\n6 - Cellules d'Energie\n7 - Minéraux\n8 - Céréales\n9 - Viande\n10 - Spiritueux \nQuelle ressource consulter ?");
             try
             {
@@ -107,40 +95,55 @@ namespace SpaceConsole
                         ResObj = spiritieux;
                         break;
                     default:
-                        Console.WriteLine("Erreur: Argument non valide\n");
-                        goto input1;
+                        Console.WriteLine("Erreur: Saisie non valide\n");
+                        goto inputRes;
                 }
                 Console.WriteLine(ReadResObj(ResObj) + "\n");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erreur: Argument non valide\n");
-                goto input1;
+                var exMsg = ex;
+                Console.WriteLine("Erreur: Saisie non valide\n");
+                goto inputRes;
             }
-
+            #endregion
 
             try
             {
                 // Instance unique de Random pr eviter les redondances dans la randomization
                 Random rnd = new Random();
 
+                // Array [Noms de Planètes]
+                string[] StarNameStr = { "Acamar", "Achernar", "Achird", "Acrab", "Acrux", "Acubens", "Adara", "Adhaféra", "Adhara", "Adhil", "Adib", "Adkhaféra", "Agéna", "Aïn", "Ak", "Akhamar", "Akhénar", "Akrab", "Akruks", "Akubens", "Aladfar", "Alamak", "Alanf", "Alanz", "Alaraf", "Alaraph", "Alashfar", "Alathfar", "Alatik", "Albaldah", "Albali", "Albiréo", "Alcaïd", "Alchiba", "Alcor", "Alcyone", "Aldanab", "Aldébaran", "Aldhaféra", "Aldhanab", "Aldhiba", "Aldhibah", "Aldhiha", "Aldib", "Aldzhabkhakh", "Alfakka", "Alfaret", "Alfarg", "Alfard", "Alfecca", "Alférats", "Alfirk", "Alga", "Algébar", "Algédi", "Algéiba", "Algénib", "Algénubi", "Algiéba", "Algiedi", "Algol", "Algomeyla", "Algomeysa", "Algorab", "Alhajoth", "Al", "Hammam", "Alhéna", "Aliath", "Alifa", "Alioth", "Alkab", "Alkaïd", "Alkalb", "Alkalurops", "Alkand", "Alkaphrah", "Alkes", "Alkhajot", "Alkhéna", "Alkurhah", "Almaach", "Almaak", "Mankib", "Almizar", "Almucédie", "Alnaïr", "Alnath", "Alnitam", "Alnitak", "Alniyat", "Alphakka", "Alphart", "Alphératz", "Alphirk", "Alraï", "Rakis", "Alrisha", "Alruccaba", "Alsabik", "Alsafi", "Alsahm", "Alnakah", "Alschaïrn", "Alshaïn", "Alsciaukat", "Sharataïn", "Alshat", "Alshémali", "Alsuhail", "Altarf", "Altaïr", "Altaïs", "Tarf", "Alterf", "Altsione", "Aludra", "Alula", "Alwaïd", "Alwazor", "Alya", "Alzirr", "Ancha", "Angetenar", "Ankaa", "Anser", "Antarès", "Antécanis", "Anwar", "Apollo", "Arcturus", "Arich", "Aridif", "Arietis", "Arkab", "Arktur", "Arm", "Arneb", "Arraï", "Arrakis", "Arrioph", "Ascella", "Aschéré", "Asellus", "Asgard", "Ashtaroth", "Askéla", "Asmidiske", "Aspidiske", "Astérion", "Astérope", "Astsella", "Asuia", "Ataïr", "Athafi", "Atik", "Atlas", "Atria", "Auva", "Avior", "Azelfafage", "Azha", "Azimech", "Azmidiske", "Baham", "Bakham", "Baten", "Bécrux", "Beemin", "Beïd", "Békruks", "Bellatrix", "Benetnasch", "Bételgeuze", "Biham", "Boteïn", "Brachium", "Cajam", "Calx", "Canicula", "Canopus", "Capella", "Caph", "Caput", "Castor", "Cébalraï", "Céginus", "Celaeno", "Céline", "Cexing", "Chaph", "Chara", "Cheleb", "Chertan", "Chort", "Clava", "Cor", "Coxa", "Cujam", "Cursa", "Cymbae", "Cygnus", "Cynosura", "Dabih", "Dana", "Déneb", "Dénébola", "Dhalim", "Dheneb", "Diadème", "Difda", "Dikhabda", "Diphda", "Dirakh", "Dschubba", "Dsiban", "Dubhé", "Duhr", "Dzhanakh", "Dzhubba", "Dziban", "Edasich", "Eldsib", "Ehlekctra", "Ehlgomajza", "Ehlnatkh", "Ehlyakrab", "Ehrakis", "Ehtamin", "Elacrab", "Eldsich", "Électre", "Electra", "Elgébar", "ElGhoul", "Elgomaïsa", "Elkeïd", "Elkhereb", "Elkhiffa", "ElKoprah", "ElMélik", "Elmuthalleth", "ElNasl", "Elnath", "ElRakis", "ElRischa", "Eltanin", "Énif", "Épi", "Érakis", "Erraï", "Errakis", "Étanin", "Fakt", "Falx", "Ferkad", "Fidis", "Fom", "Fomalhaut", "Foramen", "Fum", "Furud", "Gacrux", "Gainsar", "Gallina", "Gamal", "Gemma", "Genam", "Giauzar", "Giénah", "Gienakh", "Gildun", "Girtab", "Gnedi", "Gnosia", "Gomeïsa", "Gorgona", "Grafias", "Granatovaya", "Grassias", "Gredi", "Grenat", "Grumium", "Hadar", "Haedus", "Hamal", "Hamul", "Haris", "Hassaleh", "Hatysa", "Heka", "Hemal", "Hercule", "Heze", "Hoedus", "Homam", "Hyadum", "Hydor", "Icalurus", "Iclarkrau", "Inkalunis", "Isida", "Isis", "Izar", "Jabbah", "Jed", "Jildun", "Juza", "Kabalraï", "Kabeleced", "Kaf", "Kaffa", "Kaffalidma", "Kaitain", "Kajam", "Kakkab", "Kalb", "KalbalAkrab", "Kalbelaphard", "Kantajn", "Kanopus", "Kapella", "Kastor", "Kastra", "Kaus", "Keïd", "KelbAlraï", "Kerb", "Khadar", "Khamal", "Khan", "Khara", "Kheka", "Kheze", "Khomam", "Khort", "Kied", "Kiffa", "Kinosura", "Kitalpha", "Kocab", "KorKaroli", "Korneferos", "Krats", "Kraz", "Ksora", "KullatNunu", "Kuma", "Kurhah", "Kursa", "Labr", "LaSuperba", "Lesath", "LucidaCymbae", "Maasym", "Mabsuthat", "Maïa", "Majya", "Manubrij", "Marchab", "Marfak", "Marfic", "Marj", "Markab", "Markeb", "Marrha", "Marsik", "Masym", "Matar", "Meboula", "Media", "Megrez", "Meïssa", "Mekbuda", "Melucta", "Menchib", "Menkab", "Menkalina", "Menkar", "Menkent", "Menkib", "Mentar", "Merak", "Merez", "Merga", "Merkab", "Mérope", "Mesartim", "Metallah", "Mezartim", "Miaplacidus", "Mifrid", "Mimosa", "Minchir", "Minelauva", "Minkar", "Mintaka", "Mira", "Miram", "Mirak", "Mirakh", "Mirfak", "Mirza", "Mismar", "Misam", "Mizar", "Monkar", "Motallakh", "Muhlifaïn", "Muliphen", "Muphrid", "Murfach", "Murzim", "Muscida", "NairalSaïf", "NaïralSaïf", "NaïralZaurak", "Naos", "Nash", "Nashira", "Nat", "Navigatoria", "Nekkar", "Nibal", "Nicolaus", "Nihal", "Nod", "Nunki", "Nusakan", "Nushaba", "Oculus", "Okda", "Okul", "Os", "Palilicium", "Paon", "Parilicium", "Pelag", "Perse", "Phacd", "Phad", "Phakt", "Pherkad", "Phurud", "Pikok", "PishPai", "Pléione", "Polaris", "Polis", "Pollux", "Polyarnaya", "Porrima", "Praecipua", "Praepes", "Praesepe", "Prezepe", "PrimaGiedi", "Printseps", "Procyon", "Propus", "Protrigetrix", "Proxima", "Propus", "Protsion", "Pulcherrima", "Rana", "Rasaben", "Rasalas", "Rasalgethi", "Rasalhague", "Raselased", "Rasehlgul", "Rashammel", "Rastaban", "Rasthaoum", "Reda", "Regor", "Régulus", "Resha", "Rigel", "Rotanen", "Rukba", "Rutilicus", "Saad", "Sabik", "Saclateni", "Sadachbia", "Sadalbari", "Sadalmelik", "Sadalsud", "Sadatoni", "Sadr", "Sadira", "Sadlamulk", "Saïdak", "Salm", "Sargas", "Sarin", "Sartan", "Scalovin", "Sceptrum", "Scheddi", "Scutulum", "Seat", "Seginus", "SerdtseCarla", "Sertan", "Shaf", "Sham", "Sharatan", "Shaula", "Shedir", "Shératan", "Shiliak", "Sinistra", "Sirius", "Situla", "Skat", "Soleil", "Spica", "Stérope", "Sualocin", "Sualotsin", "Subra", "Suhaïl", "Suhel", "Sulafat", "Svalocin", "Syrma", "Tabit", "Tajgeta", "Talita", "Tania", "Tarazed", "Tarf", "Taygète", "Tegmen", "Tejat", "Terebellum", "Teyat", "Thabit", "Theemin", "Thuban", "Toliman", "Torcularis", "Tramontana", "Tsebalraj", "Tsih", "Tsolma", "Tuban", "Tureis", "Tyl", "Unuk", "Urkab", "Vasat", "Véga", "Venabulum", "Venatici", "Vendémiatrix", "Venator", "Vespertilio", "Vezad", "Vezen", "Vildiur", "Wasat", "Wazn", "Wéga", "Wezen", "Yed", "Yildun", "Yilduz", "Zaniah", "Zarijan", "Zaurak", "Zavijah", "Zibal", "Zosma", "ZubenElakrab", "Zubenelgenubi", "Zubenesch", "Zubenhakraki", "Zubra" };
+                // Convert Array to List (pour pouvoir l'editer et eviter les doublons)
+                var StarList = new List<string>(StarNameStr);
+
                 // INPUT
-                Console.WriteLine("Entrez le nombre de planètes à générer :");
+                inputPla:
+                Console.WriteLine("Entrez le nombre de planètes à générer (max: " + StarList.Count + ") :");
                 nbPla = Convert.ToInt32(Console.ReadLine());
-                
+                if (nbPla > StarList.Count || nbPla < 0) 
+                {
+                    Console.WriteLine("Veuillez entrer un nombre compris entre 0 et " + StarList.Count + "\n");
+                    goto inputPla;
+                }
 
                 #region CREATION (RANDOM) DES PLANETES
                 // Création (RANDOM) des Planetes 
-                // on peut certainement mieux faire en ré-utilisant ListExploitation(), mais au moins ça marche
+                // on peut mieux faire, par ex. en ré-utilisant ListExploitation(), mais au moins ça marche
+
                 for (int i = 0; i < nbPla; i++)
                 {
-                    int n = rnd.Next(0, 57); // Random Planet Name
+                    // Pick a RANDOM Planet Name
+                    int r = rnd.Next(StarList.Count);
+                    rndStar = (string)StarList[r];
+                    //string[] testArray = { "1", "2", "3" };
+                    
+                    StarList.Remove(rndStar);
+                    StarNameStr = StarList.ToArray();
 
-                    Array valuesStar = Enum.GetValues(typeof(Stars.StarNames));
-                    Stars.StarNames rndStar = (Stars.StarNames)valuesStar.GetValue(rnd.Next(valuesStar.Length));
-                    Console.WriteLine(rndStar);
-
-                    int p = rnd.Next(1, 6); // Random Planet Type
+                    
+                    int p = rnd.Next(1, 6);     // Random Planet Type
                     object pla = new object();
                     object exp = new object();
                     switch (p)
@@ -158,7 +161,7 @@ namespace SpaceConsole
                         }
                         break;
                     case 2:
-                        e = rnd.Next(1, 6); // Random Exploitation Type TEMPEREE
+                        e = rnd.Next(1, 6);     // Random Exploitation Type TEMPEREE
                         switch (e)
                         {
                             case 1:
@@ -179,7 +182,7 @@ namespace SpaceConsole
                         }
                         break;
                     case 3:
-                        e = rnd.Next(1, 4); // Random Exploitation Type ARIDE
+                        e = rnd.Next(1, 4);     // Random Exploitation Type ARIDE
                         switch (e)
                         {
                             case 1:
@@ -194,7 +197,7 @@ namespace SpaceConsole
                         }
                         break;
                     case 4:
-                        e = rnd.Next(1, 4); // Random Exploitation Type VOLCANIQUE
+                        e = rnd.Next(1, 4);     // Random Exploitation Type VOLCANIQUE
                         switch (e)
                         {
                             case 1:
@@ -209,7 +212,7 @@ namespace SpaceConsole
                         }
                         break;
                     case 5:
-                        e = rnd.Next(1, 3); // Random Exploitation Type ARCTIQUE
+                        e = rnd.Next(1, 3);     // Random Exploitation Type ARCTIQUE
                         switch (e)
                         {
                             case 1:
@@ -249,6 +252,7 @@ namespace SpaceConsole
             }
         }
 
+        // Affiche les informations d'une Ressource
         private static string ReadResObj(Ressource r)
         {
             return r.ResName.ToString() + " (Prix Moyen: " + r.ResPMoy + " - Min: " + r.ResPMin + " - Max: " + r.ResPMax + ")\n" + r.ResDescription.ToString();
@@ -256,7 +260,8 @@ namespace SpaceConsole
 
 
 
-        public static int nbPla = new int();   // Utilisé dans AbstractPlanet pour déterminer quelle planete est la derniere crée
+        public static string rndStar;           // Utilisé plus haut pour déterminer un nom de planete
+        public static int nbPla = new int();    // Utilisé dans AbstractPlanet pour déterminer quelle planete est la derniere crée
 
         // Liste déclarée ici a cause des tentatives de recup la liste ici, voir methode void setExploitation()
         public static List<Planet> planets = new List<Planet>();
