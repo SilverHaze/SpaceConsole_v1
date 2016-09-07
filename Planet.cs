@@ -23,6 +23,13 @@ namespace SpaceConsole
             this.plaType = p;
             this.plaExploit = e;
         }
+
+        public void PlanetName(string n)
+        {
+            this.plaName = n;
+        }
+
+
         /*
         public object PlaID
         {

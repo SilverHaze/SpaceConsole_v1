@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace SpaceConsole
 {
-    // Classe de l'Objet 'Ship' (certainement laborieux, mais ça marche)
-    // Contient des parametres pas encore utilisés.
-    class Ship
+    abstract class AbstractShip : IShipClass
     {
         //private object shipID;
-        private object shipName;        // Nom unique
+        //private object shipName;      
         private object shipClass;       // Type de vaisseau
         private object shipCargo;       // Capacité
         private object shipPrice;       // Cout du Vaisseau à l'achat
@@ -20,10 +18,10 @@ namespace SpaceConsole
         private object shipDescr;       // Description du Vaisseau
 
         // public Ship(int i, string n, string cl, int ca, int p, int mc, string cs, string d)
-        public Ship(string n, string cl, int ca, int p, int mc, string cs, string d)
+        public void SetShipClass(string cl, int ca, int p, int mc, string cs, string d)
         {
             //this.shipID = i;
-            this.shipName = n;
+            //this.shipName = n;
             this.shipClass = cl;
             this.shipCargo = ca;
             this.shipPrice = p;
@@ -37,12 +35,12 @@ namespace SpaceConsole
             get { return this.shipID; }
             set { this.shipID = value; }
         }
-        */
         public object ShipName
         {
             get { return this.shipName; }
             set { this.shipName = value; }
         }
+        */
         public object ShipClass
         {
             get { return this.shipClass; }

@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractPlanet.cs" />
+    <Compile Include="AbstractShip.cs" />
     <Compile Include="Ressource.cs" />
     <Compile Include="ExAgricole.cs" />
     <Compile Include="IRessource.cs" />
@@ -91,8 +92,12 @@
     <Compile Include="ExScientifique.cs" />
     <Compile Include="PlaTemperee.cs" />
     <Compile Include="PlaVolcanique.cs" />
+    <Compile Include="ShipMammoth.cs" />
+    <Compile Include="ShipOrca.cs" />
+    <Compile Include="ShipPelican.cs" />
+    <Compile Include="ShipTitan.cs" />
     <Compile Include="Stars.cs" />
-    <Compile Include="Ship.cs" />
+    <Compile Include="IShipClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
