@@ -7,4 +7,3 @@ D:\PGI\SpaceGame\SpaceConsole\SpaceConsole\obj\Debug\SpaceConsole.exe.manifest
 D:\PGI\SpaceGame\SpaceConsole\SpaceConsole\obj\Debug\SpaceConsole.application
 D:\PGI\SpaceGame\SpaceConsole\SpaceConsole\obj\Debug\SpaceConsole.exe
 D:\PGI\SpaceGame\SpaceConsole\SpaceConsole\obj\Debug\SpaceConsole.pdb
-D:\PGI\SpaceGame\SpaceConsole\SpaceConsole\obj\Debug\SpaceConsole.csprojResolveAssemblyReference.cache
