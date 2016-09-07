@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SpaceConsole.exe" size="43520">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SpaceConsole.exe" size="23552">
       <assemblyIdentity name="SpaceConsole" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EGTNBE23sqLiDLwxt4gmYFxt5Km3UWC51BnydrvCF/s=</dsig:DigestValue>
+        <dsig:DigestValue>EoSsPgSsnXvC+LzXJEDCLJ1DnQ7QbCSMpdUTDhfoYQg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
